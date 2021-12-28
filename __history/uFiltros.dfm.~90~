@@ -1,0 +1,442 @@
+object frmFiltros: TfrmFiltros
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Filtros'
+  ClientHeight = 524
+  ClientWidth = 758
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Position = poScreenCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 336
+    Top = 232
+    Width = 105
+    Height = 105
+  end
+  object pnlFiltros: TPanel
+    Left = 0
+    Top = 0
+    Width = 758
+    Height = 524
+    Align = alClient
+    TabOrder = 0
+    DesignSize = (
+      758
+      524)
+    object ShapeFiltro: TShape
+      Left = 11
+      Top = 15
+      Width = 735
+      Height = 3
+      Brush.Color = 9514330
+      Pen.Color = 5898285
+      Pen.Style = psClear
+    end
+    object lblTitulo: TLabel
+      Left = 11
+      Top = 46
+      Width = 370
+      Height = 19
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Alignment = taCenter
+      Caption = 'Defina o filtro de reenvio das informa'#231#245'es da tabela '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Transparent = False
+    end
+    object lblNomeTabelaSelecionada: TLabel
+      Left = 381
+      Top = 45
+      Width = 56
+      Height = 21
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Alignment = taCenter
+      Caption = 'Tabela'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = False
+    end
+    object lblCampo: TLabel
+      AlignWithMargins = True
+      Left = 11
+      Top = 82
+      Width = 33
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Caption = 'Campo'
+      Transparent = False
+    end
+    object lblCondicao: TLabel
+      AlignWithMargins = True
+      Left = 168
+      Top = 82
+      Width = 44
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Caption = 'Condi'#231#227'o'
+      Transparent = False
+    end
+    object lblValor: TLabel
+      AlignWithMargins = True
+      Left = 328
+      Top = 82
+      Width = 24
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Caption = 'Valor'
+      Transparent = False
+    end
+    object Shape1: TShape
+      Left = 11
+      Top = 175
+      Width = 735
+      Height = 3
+      Brush.Color = 9514330
+      Pen.Color = 5898285
+      Pen.Style = psClear
+    end
+    object TLabel
+      Left = 11
+      Top = 197
+      Width = 36
+      Height = 13
+      Caption = 'Filtros: '
+    end
+    object lblFiltrosWhere: TLabel
+      Left = 53
+      Top = 197
+      Width = 3
+      Height = 13
+    end
+    object lblComunicar: TLabel
+      Left = 530
+      Top = 469
+      Width = 116
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Alignment = taCenter
+      Caption = 'For'#231'ar comunica'#231#227'o:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = False
+    end
+    object lblTotalRegistros: TLabel
+      Left = 11
+      Top = 469
+      Width = 108
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Alignment = taCenter
+      Caption = 'Total de registros: '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = False
+    end
+    object Image2: TImage
+      Left = 721
+      Top = 185
+      Width = 25
+      Height = 25
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000190000
+        00190806000000C4E9856300000006624B474400FF00FF00FFA0BDA793000003
+        3D4944415478DABD956B48935118C7F76E73EA9648A1A49BB3614448D1058312
+        FB200516050681ECA62BC50AA1BE045186F4458A08A208AC58B80AE78CA46F41
+        6074C510C10F89269260D058D1FD62C8DCB5DF59EF682EDB868B0E3C9C739EF3
+        9CFFFF3C97F779A586868625B9B9B9E7A3D168BD42A12851643722C83472B1B7
+        B7B72BAE946C369B4B92A466D67EE44D96244A6485C06598DD6EF7ED1889DD6E
+        FFCC9C8FB202E5DB2C49143C7A2F5877905BE059E32451661FEE95654B2086D5
+        6A5DA3542AC7590E80B9634112B3D9BC12A3D2502834D4DFDF1F966D3691B3C2
+        54E09C8FF5F5F5BD4B4BE27038CAC3E1F02B115BDCBD80BB471B1B1B1D00DCCC
+        C0893130D6A52501703D80CF15BF32D70D492BBA63E8CE6540F2098CA24CC225
+        F627202844DC3D3D3DE3B277EDEC9569C23502C6B58C72F25F12CF7E1FAF3261
+        E81425DDD2D252303737D78627CBD278721F8C0769499A9A9A2A2391C8849C13
+        417288F3236C2F65E084178CF2B4247C48AB007F295FEA4277189DF0E2720AF0
+        5964109992ED2BB07FC1FE69AA70D5896F027944DD7FA4B7E5D3DB76E1E14289
+        0FE4E5E53D74B95C33894AEE146B349ACD60DEFD2789E7E54B09CF4E1E51C936
+        CC7A54ABD50E389DCED9B8CD3C92DADA5AB5C160B88EBB26CAB6034F9E880EA0
+        52A9AE2424FE8B4EA7DB234020B0A017DD36B928BCE81DE4F4F14239A9E27044
+        36BC81AE19DD7174671300DAD05FE59E8DB55B60FCC5C900DE6DE7A183F348A8
+        8CE5B82BDA8AE8CAA7784967BCABCA177F705EE2F7FBD5C47C3AC18308392CC2
+        6303C063094493814060ED1F39A18C75844AE3F178BE8AF297135998939323FA
+        5918BBEF10DB45479081BE2121D152E80E06EE0A123552100B9524D52C2AF1DC
+        39C3D42E83E893FF439C6F611A92B70705899745A9881F17BCA9C083C1E00CED
+        FF03773AD976C8EA6A42F51ECFA745E1E8F5FA72741BE221E6AC55A2CB9E6471
+        3A43279EE1F1D6A43CC572825E65B1588CE4E575E205B0378ACA10FFF9035CDA
+        CD5A9B8624E8F3F9EA4D26931AAFA6D897FDC68AD65114C5CC9E04FB61C8AB25
+        C5220705B28D10DF63A9F98B89289C1A4826164D2206B9A961EA4656271D0DF3
+        80FD7C2393629315891822D946A3B18AD28DB515C2350AB828E368DCE627C5A0
+        E99F4B91D1DD0000000049454E44AE426082}
+    end
+    object PanelFiltroCaption: TPanel
+      Left = 19
+      Top = 15
+      Width = 55
+      Height = 16
+      BevelOuter = bvNone
+      Caption = 'Filtros'
+      Color = 9514331
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object ComboBoxCampoTabela: TDBLookupComboBox
+      Left = 17
+      Top = 103
+      Width = 145
+      Height = 21
+      TabOrder = 1
+      OnExit = ComboBoxCampoTabelaExit
+    end
+    object ComboBoxCondicoes: TComboBox
+      Left = 168
+      Top = 103
+      Width = 145
+      Height = 21
+      TabOrder = 2
+      Text = 'Condi'#231#227'o'
+      OnExit = ComboBoxCondicoesExit
+      Items.Strings = (
+        '')
+    end
+    object edtValor: TEdit
+      Left = 328
+      Top = 103
+      Width = 357
+      Height = 21
+      TabOrder = 3
+    end
+    object Panel1: TPanel
+      Left = 19
+      Top = 175
+      Width = 100
+      Height = 16
+      BevelOuter = bvNone
+      Caption = 'Total de registros'
+      Color = 9514331
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 16
+    end
+    object gridTabelas: TDBGrid
+      Left = 11
+      Top = 216
+      Width = 735
+      Height = 243
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = dtsRegistros
+      DrawingStyle = gdsClassic
+      FixedColor = 9514330
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Malgun Gothic'
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
+      ParentFont = False
+      TabOrder = 12
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindow
+      TitleFont.Height = -11
+      TitleFont.Name = 'Malgun Gothic'
+      TitleFont.Style = []
+    end
+    object btnLimparFiltros: TBitBtn
+      Left = 474
+      Top = 133
+      Width = 140
+      Height = 25
+      Caption = 'Limpar Filtros'
+      TabOrder = 11
+      OnClick = btnLimparFiltrosClick
+    end
+    object btnForcarCentral: TBitBtn
+      Left = 530
+      Top = 486
+      Width = 105
+      Height = 25
+      Caption = 'Central para Loja'
+      TabOrder = 14
+      OnClick = btnForcarCentralClick
+    end
+    object btnAplicarFiltro: TBitBtn
+      Left = 328
+      Top = 133
+      Width = 140
+      Height = 25
+      Caption = 'Aplicar Filtros'
+      TabOrder = 10
+      OnClick = btnAplicarFiltroClick
+    end
+    object btnForcarLoja: TBitBtn
+      Left = 641
+      Top = 486
+      Width = 105
+      Height = 25
+      Caption = 'Loja para Central'
+      TabOrder = 15
+      OnClick = btnForcarLojaClick
+    end
+    object edtValor1: TEdit
+      Left = 328
+      Top = 103
+      Width = 140
+      Height = 21
+      TabOrder = 4
+    end
+    object edtValor2: TEdit
+      Left = 474
+      Top = 103
+      Width = 140
+      Height = 21
+      TabOrder = 5
+    end
+    object edtHora1: TMaskEdit
+      Left = 474
+      Top = 103
+      Width = 55
+      Height = 21
+      EditMask = '00:00:00;1;_'
+      MaxLength = 8
+      TabOrder = 7
+      Text = '  :  :  '
+    end
+    object edtHora2: TMaskEdit
+      Left = 691
+      Top = 103
+      Width = 55
+      Height = 21
+      EditMask = '00:00:00;1;_'
+      MaxLength = 8
+      TabOrder = 9
+      Text = '  :  :  '
+    end
+    object DateTime1: TDateEdit
+      Left = 328
+      Top = 103
+      Width = 140
+      Height = 21
+      DefaultToday = True
+      NumGlyphs = 2
+      TabOrder = 6
+      Text = '09/12/2021'
+    end
+    object DateTime2: TDateEdit
+      Left = 545
+      Top = 103
+      Width = 140
+      Height = 21
+      DefaultToday = True
+      NumGlyphs = 2
+      TabOrder = 8
+      Text = '09/12/2021'
+    end
+    object btnBuscarRegistros: TBitBtn
+      Left = 11
+      Top = 486
+      Width = 105
+      Height = 25
+      Caption = 'Buscar Registros'
+      TabOrder = 13
+      OnClick = btnBuscarRegistrosClick
+    end
+  end
+  object qryCamposTabela: TFDQuery
+    IndexesActive = False
+    Connection = dtmPrincipal.ConnLoja
+    SQL.Strings = (
+      '')
+    Left = 32
+    Top = 104
+    object qryCamposTabelaField: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Field'
+      Origin = 'Field'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 64
+    end
+    object qryCamposTabelaType: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Type'
+      Origin = 'Type'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+  end
+  object dtsCamposTabela: TDataSource
+    DataSet = qryCamposTabela
+    Left = 128
+    Top = 104
+  end
+  object qryRegistros: TFDQuery
+    Left = 104
+    Top = 344
+  end
+  object dtsRegistros: TDataSource
+    Left = 168
+    Top = 344
+  end
+  object qryTotalRegistros: TFDQuery
+    Connection = dtmPrincipal.ConnLoja
+    Left = 440
+    Top = 464
+  end
+end

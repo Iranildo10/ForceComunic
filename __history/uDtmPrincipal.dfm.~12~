@@ -1,0 +1,47 @@
+object dtmPrincipal: TdtmPrincipal
+  Height = 339
+  Width = 574
+  PixelsPerInch = 96
+  object ConnLoja: TFDConnection
+    Params.Strings = (
+      'Server=127.0.0.1'
+      'Database=gerente'
+      'User_Name=root'
+      'Password=123456big'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 64
+    Top = 24
+  end
+  object ConnCentral: TFDConnection
+    Left = 176
+    Top = 24
+  end
+  object DriverMysql: TFDPhysMySQLDriverLink
+    VendorLib = '.\libmysql.dll'
+    Left = 64
+    Top = 112
+  end
+  object WaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 176
+    Top = 112
+  end
+  object ConnLog: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    Properties.Strings = (
+      'controls_cp=CP_UTF16')
+    HostName = ''
+    Port = 3306
+    Database = 'heroku_ff9cd56c55644cd'
+    User = 'b1e3c229547569'
+    Password = '87564f7c'
+    Protocol = 'mysql'
+    LibraryLocation = 
+      'C:\Users\Iranildo\Documents\Projetos Delphi\ForceComunic\libmysq' +
+      'l.dll'
+    Left = 432
+    Top = 40
+  end
+end

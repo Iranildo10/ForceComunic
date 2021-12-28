@@ -1,0 +1,69 @@
+unit Helper.UWebServicesBIG;
+
+interface
+
+type
+  TTipoRetorno = (ttrCompleto,ttrApenasHost,ttrApenasPath);
+
+  TWebServicesBIG = class
+  public
+    class function GetPegaSenhaURL  (TipoRetorno: TTipoRetorno = ttrCompleto): String;
+    class function GetPegaSenhaWSDL (TipoRetorno: TTipoRetorno = ttrCompleto): String;
+    class function GetInstallBigURL (TipoRetorno: TTipoRetorno = ttrCompleto): String;
+    class function GetInstallBigWSDL(TipoRetorno: TTipoRetorno = ttrCompleto): String;
+  end;
+  WebServicesBIG = TWebServicesBIG;
+
+implementation
+
+uses
+  Helper.UConstantesBig;
+
+{ TWebServicesBIG }
+
+class function TWebServicesBIG.GetPegaSenhaURL(TipoRetorno: TTipoRetorno): String;
+const
+  URL = '/PedeSenha.dll/soap/IWebSenha';
+begin
+  Case TipoRetorno of
+    ttrCompleto   : Result := TConstantesBigClass.GetHostWebServicePedeSenha + URL;
+    ttrApenasHost : Result := TConstantesBigClass.GetHostWebServicePedeSenha;
+    ttrApenasPath : Result := URL;
+  end;
+end;
+
+class function TWebServicesBIG.GetPegaSenhaWSDL(TipoRetorno: TTipoRetorno): String;
+const
+  URL = '/PedeSenha.dll/wsdl/IWebSenha';
+begin
+  Case TipoRetorno of
+    ttrCompleto   : Result := TConstantesBigClass.GetHostWebServicePedeSenha + URL;
+    ttrApenasHost : Result := TConstantesBigClass.GetHostWebServicePedeSenha;
+    ttrApenasPath : Result := URL;
+  end;
+end;
+
+class function TWebServicesBIG.GetInstallBigURL(TipoRetorno: TTipoRetorno): String;
+const
+  URL = '/InstallBIG.dll/soap/IInstallBIG';
+begin
+  Case TipoRetorno of
+    ttrCompleto   : Result := TConstantesBigClass.GetHostWebServiceInstallBig + URL;
+    ttrApenasHost : Result := TConstantesBigClass.GetHostWebServiceInstallBig;
+    ttrApenasPath : Result := URL;
+  end;
+end;
+
+class function TWebServicesBIG.GetInstallBigWSDL(TipoRetorno: TTipoRetorno): String;
+const
+  URL = '/InstallBIG.dll/wsdl/IInstallBIG';
+begin
+  Case TipoRetorno of
+    ttrCompleto   : Result := TConstantesBigClass.GetHostWebServiceInstallBig + URL;
+    ttrApenasHost : Result := TConstantesBigClass.GetHostWebServiceInstallBig;
+    ttrApenasPath : Result := URL;
+  end;
+end;
+
+end.
+

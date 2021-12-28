@@ -1,0 +1,141 @@
+unit uConfirmacaoEnvio;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, RxCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uFiltros, uDtmPrincipal,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TfrmConfirmacaoEnvio = class(TForm)
+    lblConfirmacaoEnvio: TLabel;
+    Image1: TImage;
+    lblQuantidadeRegistros: TLabel;
+    pnlContinuar: TPanel;
+    pnlVoltar: TPanel;
+    procedure pnlContinuarClick(Sender: TObject);
+    procedure pnlVoltarClick(Sender: TObject);
+    procedure gravarLog();
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    direcao, filtrosWhere, nomeTabela, codFisica : String;
+  end;
+
+var
+  frmConfirmacaoEnvio: TfrmConfirmacaoEnvio;
+
+implementation
+
+{$R *.dfm}
+
+uses uFinal;
+
+procedure TfrmConfirmacaoEnvio.gravarLog;
+var Qry : TFDQuery;
+begin
+  try
+    Qry :=  TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConnLoja;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('CREATE TABLE IF NOT EXISTS log_force_comunic '+ '(' +
+                'log_force_comunic_id INT PRIMARY KEY AUTO_INCREMENT, ' +
+                'funcionario_big INT NOT NULL, ' +
+                'data_mudanca_lojas_leram DATETIME NOT NULL ' +
+                ');');
+    try
+      Qry.ExecSQL;
+    except
+      ShowMessage('Erro ao criar log');
+    end;
+
+    Qry.SQL.Clear;
+    Qry.SQL.Add('CREATE TABLE IF NOT EXISTS log_force_comunic_tabela_registros '+ '(' +
+                'tabela VARCHAR(60) NOT NULL, ' +
+                'total_registros INT NOT NULL, ' +
+                'log_force_comunic_id INT NOT NULL, ' +
+                'FOREIGN KEY (log_force_comunic_id) REFERENCES log_force_comunic(log_force_comunic_id) ' +
+                ');');
+    try
+      Qry.ExecSQL;
+    except
+      ShowMessage('Erro ao criar log');
+    end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+
+end;
+
+procedure TfrmConfirmacaoEnvio.pnlContinuarClick(Sender: TObject);
+var Qry : TFDQuery;
+begin
+  if direcao = 'C' then
+  begin
+  try
+    Qry :=  TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConnCentral;
+    Qry.SQL.Clear;
+    if filtrosWhere <> '' then
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + '*' + '" WHERE ' + filtrosWhere )
+    else
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + '*' + '"');
+
+  try
+    Qry.ExecSQL;
+  except
+     ShowMessage('Erro ao  mudar lojas_leram');
+  end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+  end;
+
+  if direcao = 'L' then
+  begin
+    try
+    Qry :=  TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConnLoja;
+    Qry.SQL.Clear;
+    if filtrosWhere <> '' then
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + codFisica + '" WHERE ' + filtrosWhere )
+    else
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + codFisica + '" ');
+
+  try
+    Qry.ExecSQL;
+  except
+     ShowMessage('Erro ao mudar  lojas_leram');
+  end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+
+  end;
+
+  gravarLog();
+
+  frmFinal := TfrmFinal.Create(Self);
+  frmFinal.ShowModal;
+  frmConfirmacaoEnvio.Close;
+
+end;
+
+procedure TfrmConfirmacaoEnvio.pnlVoltarClick(Sender: TObject);
+begin
+  frmConfirmacaoEnvio.Close;
+end;
+
+end.

@@ -1,0 +1,20 @@
+program ForceComunic;
+
+uses
+  Vcl.Forms,
+  uSelecionaTabelas in 'uSelecionaTabelas.pas' {frmSelecionaTabelas},
+  uDtmPrincipal in 'uDtmPrincipal.pas' {dtmPrincipal: TDataModule},
+  uEnum in 'uEnum.pas',
+  Enter in 'Enter.pas',
+  uFiltros in 'uFiltros.pas' {frmFiltros},
+  uConfirmacaoEnvio in 'uConfirmacaoEnvio.pas' {frmConfirmacaoEnvio},
+  uFinal in 'uFinal.pas' {frmFinal};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmSelecionaTabelas, frmSelecionaTabelas);
+  Application.Run;
+end.

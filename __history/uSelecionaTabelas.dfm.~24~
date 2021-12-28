@@ -1,0 +1,302 @@
+object frmSelecionaTabelas: TfrmSelecionaTabelas
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Sele'#231#227'o de Tabelas'
+  ClientHeight = 533
+  ClientWidth = 594
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Malgun Gothic'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 97
+    Width = 594
+    Height = 87
+    Align = alTop
+    TabOrder = 0
+    ExplicitWidth = 584
+    object ShapeFiltro: TShape
+      Left = 3
+      Top = 21
+      Width = 577
+      Height = 3
+      Brush.Color = 9514330
+      Pen.Color = 5898285
+      Pen.Style = psClear
+    end
+    object Label2: TLabel
+      AlignWithMargins = True
+      Left = 11
+      Top = 34
+      Width = 142
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Caption = 'Filtrar pelo nome da tabela'
+      Transparent = False
+    end
+    object PanelFiltroCaption: TPanel
+      Left = 11
+      Top = 15
+      Width = 55
+      Height = 16
+      BevelOuter = bvNone
+      Caption = 'Filtro'
+      Color = 9514330
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object edtFiltroTabela: TEdit
+      AlignWithMargins = True
+      Left = 11
+      Top = 52
+      Width = 558
+      Height = 21
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      TabOrder = 1
+      OnChange = edtFiltroTabelaChange
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 594
+    Height = 97
+    Align = alTop
+    TabOrder = 1
+    ExplicitWidth = 584
+    DesignSize = (
+      594
+      97)
+    object Shape1: TShape
+      Left = 3
+      Top = 21
+      Width = 577
+      Height = 3
+      Brush.Color = 9514330
+      Pen.Color = 5898285
+      Pen.Style = psClear
+    end
+    object lblSelecionarTabela: TLabel
+      AlignWithMargins = True
+      Left = 11
+      Top = 44
+      Width = 94
+      Height = 13
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Caption = 'Selecione a tabela'
+      Transparent = False
+    end
+    object lblAtalhos: TLabel
+      Left = 11
+      Top = 65
+      Width = 49
+      Height = 17
+      Anchors = [akLeft, akBottom]
+      Caption = 'Atalhos:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentFont = False
+      Transparent = False
+    end
+    object Image1: TImage
+      Left = 66
+      Top = 65
+      Width = 24
+      Height = 24
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000000
+        C94944415478DA6364A031601C541638046D4DF9F7EFFFFF431B7CE652DD02BB
+        E0ED5E8CFFFE6D02B1FF3331F91D5AEBB98D6A163806EFD0FEF7EFEF3120930F
+        2AF4898989D96AFF5A8FAB145BE0E0BB59E43F2BD32986FF0C8A683AEF33FEFE
+        677660B3EF1BB22DD00E5DC526F2877B0F90698B43C9E1372C5F5DAEAE0EFB45
+        9605F6815B8091C99884DF8FFFE71D5CEF934CB20576015BF319191926100A42
+        B015FF190A0E6DF09E48B20F507DB3F53F32FFE07A6FA2F48E5A306AC1A805A3
+        1650D30272C1D0B70000540F6919919745200000000049454E44AE426082}
+    end
+    object Image2: TImage
+      Left = 81
+      Top = 65
+      Width = 24
+      Height = 24
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF800000006624B474400FF00FF00FFA0BDA793000000
+        C54944415478DA6364A031601C3916D8076EFD8FCC3FB8DE9B28BDA3168C5A30
+        6AC1A8059458601FB0AD8C81F17F2791F697012DEC26D907F6415BA631FC67CC
+        C4EFC4FFD30FAEF3C9222B888CD3CEB072BF7EB19D9181D1199BFC7F86FF7BBF
+        8A4A789E9D65F29B2C0B40C032748710DB9FBFC7814C3534A95BBF58982D8FAF
+        F67887D783842C000147BFEDEAFF98FF812C11840ABD67FACB64B97F93E74D42
+        7A494945AE406A1B94EB058CD4DDC4E823A9CAB40BDC9A0DA20FADF79E4AAC9E
+        C15327930B00628163199C07878F0000000049454E44AE426082}
+    end
+    object Panel3: TPanel
+      Left = 11
+      Top = 15
+      Width = 55
+      Height = 16
+      BevelOuter = bvNone
+      Caption = 'Legendas'
+      Color = 9514331
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object Panel5: TPanel
+    Left = 0
+    Top = 184
+    Width = 594
+    Height = 333
+    Align = alTop
+    TabOrder = 2
+    ExplicitWidth = 584
+    DesignSize = (
+      594
+      333)
+    object Shape2: TShape
+      Left = 3
+      Top = 21
+      Width = 577
+      Height = 3
+      Brush.Color = 9514330
+      Pen.Color = 5898285
+      Pen.Style = psClear
+    end
+    object Panel6: TPanel
+      Left = 11
+      Top = 15
+      Width = 150
+      Height = 16
+      BevelOuter = bvNone
+      Caption = 'Tabelas que comunicam'
+      Color = 9514331
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object gridTabelas: TDBGrid
+      Left = 66
+      Top = 37
+      Width = 433
+      Height = 252
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = dtsTabelas
+      DrawingStyle = gdsClassic
+      FixedColor = 9514330
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Malgun Gothic'
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
+      ParentFont = False
+      TabOrder = 1
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindow
+      TitleFont.Height = -11
+      TitleFont.Name = 'Malgun Gothic'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'tabela'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'envia_matriz'
+          Width = 84
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'recebe_matriz'
+          Width = 76
+          Visible = True
+        end>
+    end
+    object btnFiltrarRegistros: TBitBtn
+      Left = 232
+      Top = 295
+      Width = 105
+      Height = 25
+      Caption = 'Filtrar Registros'
+      TabOrder = 2
+      OnClick = btnFiltrarRegistrosClick
+    end
+  end
+  object qryTabelas: TFDQuery
+    Connection = dtmPrincipal.ConnLoja
+    SQL.Strings = (
+      'select tabela, envia_matriz, recebe_matriz from comunicacao')
+    Left = 448
+    Top = 40
+    object qryTabelastabela: TStringField
+      DisplayLabel = 'Tabela'
+      FieldName = 'tabela'
+      Origin = 'tabela'
+      Required = True
+      Size = 40
+    end
+    object qryTabelasenvia_matriz: TStringField
+      DisplayLabel = 'Envia'
+      FieldName = 'envia_matriz'
+      Origin = 'envia_matriz'
+      FixedChar = True
+      Size = 1
+    end
+    object qryTabelasrecebe_matriz: TStringField
+      DisplayLabel = 'Recebe'
+      FieldName = 'recebe_matriz'
+      Origin = 'recebe_matriz'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dtsTabelas: TDataSource
+    DataSet = qryTabelas
+    Left = 360
+    Top = 40
+  end
+end

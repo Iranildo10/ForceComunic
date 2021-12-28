@@ -1,0 +1,100 @@
+unit uConfirmacaoEnvio;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, RxCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, uFiltros, uDtmPrincipal,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TfrmConfirmacaoEnvio = class(TForm)
+    lblConfirmacaoEnvio: TLabel;
+    Image1: TImage;
+    lblQuantidadeRegistros: TLabel;
+    pnlContinuar: TPanel;
+    pnlVoltar: TPanel;
+    procedure pnlContinuarClick(Sender: TObject);
+    procedure pnlVoltarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    direcao, filtrosWhere, nomeTabela, codFisica : String;
+  end;
+
+var
+  frmConfirmacaoEnvio: TfrmConfirmacaoEnvio;
+
+implementation
+
+{$R *.dfm}
+
+uses uFinal;
+
+procedure TfrmConfirmacaoEnvio.pnlContinuarClick(Sender: TObject);
+var Qry : TFDQuery;
+begin
+  if direcao = 'C' then
+  begin
+  try
+    Qry :=  TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConnCentral;
+    Qry.SQL.Clear;
+    if filtrosWhere <> '' then
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + '*' + '" WHERE ' + filtrosWhere )
+    else
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + '*' + '"');
+
+  try
+    Qry.ExecSQL;
+  except
+     ShowMessage('Erro ao  mudar lojas_leram');
+  end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+  end;
+
+  if direcao = 'L' then
+  begin
+    try
+    Qry :=  TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConnLoja;
+    Qry.SQL.Clear;
+    if filtrosWhere <> '' then
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + codFisica + '" WHERE ' + filtrosWhere )
+    else
+      Qry.SQL.Add('UPDATE ' + nomeTabela + ' SET lojas_leram = "' + codFisica + '" ');
+
+  try
+    Qry.ExecSQL;
+  except
+     ShowMessage('Erro ao mudar  lojas_leram');
+  end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+
+  end;
+
+  frmFinal := TfrmFinal.Create(Self);
+  frmFinal.ShowModal;
+  frmConfirmacaoEnvio.Close;
+
+end;
+
+procedure TfrmConfirmacaoEnvio.pnlVoltarClick(Sender: TObject);
+begin
+  frmConfirmacaoEnvio.Close;
+end;
+
+end.

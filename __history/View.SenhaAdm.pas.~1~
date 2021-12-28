@@ -1,0 +1,151 @@
+unit View.SenhaAdm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Service.Messages, View.Principal, Helper.Util, Service.Logger, Service.WSInstaladorBIGIntf;
+
+type
+  TViewSenhaAdm = class(TForm)
+    ImageLogo: TImage;
+    ImageClose: TImage;
+    ShapeButton: TShape;
+    sbtnOK: TSpeedButton;
+    ShapeFundo: TShape;
+    Shape2: TShape;
+    Shape1: TShape;
+    EditUsuario: TEdit;
+    EditSenha: TEdit;
+    Label21: TLabel;
+    Shape3: TShape;
+    Label1: TLabel;
+    Label2: TLabel;
+    procedure ImageCloseClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure txtSenhaAdmKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure sbtnOKClick(Sender: TObject);
+    procedure EditUsuarioKeyPress(Sender: TObject; var Key: Char);
+    procedure EditSenhaKeyPress(Sender: TObject; var Key: Char);
+  private
+    vezes: Integer;
+    FFechar: Boolean;
+    procedure Valida(Edit: TCustomEdit; Mensagem: String; Numero: Boolean);
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewSenhaAdm: TViewSenhaAdm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TViewSenhaAdm.Valida(Edit: TCustomEdit; Mensagem: String; Numero: Boolean);
+var
+  bResult: Boolean;
+begin
+  if Numero then
+    bResult := StrToIntDef(Edit.Text,0) > 0
+  else
+    bResult := Trim(Edit.Text) <> '';
+
+  if not bResult then
+  begin
+    Messages.Error(Mensagem);
+    Edit.SetFocus;
+    Abort;
+  end;
+end;
+
+procedure TViewSenhaAdm.EditSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+    sbtnOK.Click;
+  if key = #27 then
+    Close;
+end;
+
+procedure TViewSenhaAdm.EditUsuarioKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+    EditSenha.SetFocus;
+  if key = #27 then
+    Close;
+
+  if not(Key in ['0'..'9', #8, #11]) then
+    Key := #0;
+end;
+
+procedure TViewSenhaAdm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if FFechar then
+  begin
+    if not Messages.Confirm('Deseja realmente finalizar o assistente?') then
+      Action := caNone
+    else
+      Application.Terminate;
+  end
+  else
+   Application.Terminate;
+end;
+
+procedure TViewSenhaAdm.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #27 then
+    Close;
+end;
+
+procedure TViewSenhaAdm.ImageCloseClick(Sender: TObject);
+begin
+  FFechar := true;
+  ViewSenhaAdm.Close;
+end;
+
+procedure TViewSenhaAdm.sbtnOKClick(Sender: TObject);
+var
+  Buffer: String;
+begin
+  Valida(EditUsuario,'Informe um código de usuário válido.',True);
+  Valida(EditSenha  ,'Informe a senha do usuário.',true);
+
+  try
+    Buffer := GetIInstallBIG().GetLoginFuncionarioBIG(StrToIntDef(EditUsuario.Text,0),EditSenha.Text);
+
+    if Length(Buffer) > 8 then
+    begin
+      Messages.Error(Buffer);
+      EditUsuario.SetFocus;
+      Exit;
+    end;
+  Except
+    On E:Exception do
+    begin
+      Messages.Error(e.Message);
+      EditUsuario.SetFocus;
+      Exit;
+    end;
+  end;
+
+  LoggerService.Add('LoginSupport: ' + EditUsuario.Text + ' - ' + UpperCase(GetIInstallBIG().GetNomeFuncionarioBIG(StrToIntDef(EditUsuario.Text,0))));
+      ViewSenhaAdm.Hide;
+      ViewPrincipal.ShowModal;
+
+end;
+
+procedure TViewSenhaAdm.txtSenhaAdmKeyPress(Sender: TObject; var Key: Char);
+begin
+
+  if key = #13 then
+    sbtnOK.Click;
+  if key = #27 then
+    Close;
+
+  if not(Key in ['0'..'9', #8, #11]) then
+    Key := #0;
+end;
+
+end.
